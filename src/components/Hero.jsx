@@ -93,6 +93,7 @@ function Hero() {
 
           <a
             href="https://drive.google.com/file/d/1Ltrg5szbz5j1pTLEGU6tj2vlspTbmiES/view"
+            
             target="_blank"
           >
             <button className="btn primary-btn">
