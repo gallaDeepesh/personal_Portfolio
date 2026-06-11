@@ -17,7 +17,7 @@ function Resume() {
         </p>
 
         <a
-          href="https://1drv.ms/b/c/22105f5e41f2fe8d/IQDeuV4Qb82sSKJV1KVUo2vXAW6CKCRq9NVyJlf5QUpeaKg?e=vsHHWf"
+          href="https://drive.google.com/file/d/1Ltrg5szbz5j1pTLEGU6tj2vlspTbmiES/view?usp=drive_link"
           target="_blank"
         >
           <button className="btn primary-btn">
