@@ -1,21 +1,66 @@
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import { useRef } from "react";
+import emailjs from "@emailjs/browser";
+
+import {
+  FaGithub,
+  FaLinkedin,
+  FaEnvelope,
+} from "react-icons/fa";
 
 function Contact() {
+
+  const form = useRef();
+
+  const sendEmail = (e) => {
+
+    e.preventDefault();
+
+    emailjs.sendForm(
+
+      import.meta.env.VITE_EMAILJS_SERVICE_ID,
+
+      import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
+
+      form.current,
+
+      import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+
+    )
+
+    .then(() => {
+
+      alert("Message sent successfully!");
+
+      form.current.reset();
+
+    })
+
+    .catch(() => {
+
+      alert("Failed to send message.");
+
+    });
+  };
 
   return (
 
     <section id="contact">
 
       <h2 className="section-title">
-        Contact
+        Contact Me
       </h2>
 
       <div className="card">
 
-        <form className="grid">
+        <form
+          ref={form}
+          onSubmit={sendEmail}
+          className="grid"
+        >
 
           <input
             type="text"
+            name="user_name"
             placeholder="Your Name"
             required
             style={inputStyle}
@@ -23,18 +68,24 @@ function Contact() {
 
           <input
             type="email"
+            name="user_email"
             placeholder="Your Email"
             required
             style={inputStyle}
           />
 
           <textarea
+            name="message"
             placeholder="Your Message"
             rows="5"
+            required
             style={inputStyle}
           />
 
-          <button className="btn primary-btn">
+          <button
+            type="submit"
+            className="btn primary-btn"
+          >
             Send Message
           </button>
 
@@ -61,7 +112,7 @@ function Contact() {
           </a>
 
           <a
-            href="https://linkedin.com/"
+            href="https://www.linkedin.com/in/deepesh-galla-250678293"
             target="_blank"
           >
             <FaLinkedin />
@@ -77,10 +128,11 @@ function Contact() {
 
 const inputStyle = {
   padding:"15px",
-  borderRadius:"10px",
+  borderRadius:"12px",
   border:"1px solid #1e293b",
   background:"#0f172a",
-  color:"white"
+  color:"white",
+  fontSize:"1rem"
 };
 
 export default Contact;
